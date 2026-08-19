@@ -79,12 +79,14 @@
             color: var(--text-main);
             line-height: 1.5;
             overflow-x: hidden;
+            width: 100%;
         }
 
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
+            width: 100%;
         }
 
         header {
@@ -183,6 +185,7 @@
             text-decoration: none;
             transition: background-color 0.2s, transform 0.2s;
             width: 100%;
+            box-sizing: border-box;
         }
 
         .btn-whatsapp:hover {
@@ -475,6 +478,8 @@
             padding: 36px;
             margin-bottom: 56px;
             scroll-margin-top: 100px;
+            box-sizing: border-box;
+            width: 100%;
         }
 
         .contact-form {
@@ -482,6 +487,7 @@
             grid-template-columns: 1fr 1fr;
             gap: 18px;
             margin-top: 20px;
+            width: 100%;
         }
 
         .contact-details-grid {
@@ -517,6 +523,7 @@
             height: 32px;
             background: rgba(255, 255, 255, 0.05);
             border-radius: 8px;
+            flex-shrink: 0;
         }
 
         .contact-info-item a {
@@ -533,6 +540,7 @@
             display: flex;
             flex-direction: column;
             gap: 6px;
+            width: 100%;
         }
 
         .form-group.full { grid-column: 1 / -1; }
@@ -547,11 +555,14 @@
             background: #0f172a;
             border: 1px solid var(--border-color);
             border-radius: 8px;
-            padding: 10px 14px;
+            padding: 12px 14px;
             color: white;
             font-size: 0.95rem;
             outline: none;
             transition: border-color 0.2s;
+            width: 100%;
+            box-sizing: border-box;
+            max-width: 100%;
         }
 
         .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
@@ -586,47 +597,65 @@
         }
 
         @media (max-width: 768px) {
-            .nav-wrapper {
-                flex-wrap: wrap;
-                gap: 12px;
-                justify-content: center;
+            .container {
+                padding: 0 16px;
             }
 
+            header {
+                padding: 12px 0;
+            }
+
+            /* Oprava hlavičky na mobilu - skrytí textového menu */
             .nav-links {
-                display: flex;
-                flex-wrap: wrap;
-                justify-content: center;
-                gap: 10px 14px;
-                width: 100%;
-                margin-top: 10px;
+                display: none;
             }
 
-            .nav-links a {
+            .nav-wrapper {
+                justify-content: space-between;
+                align-items: center;
+            }
+
+            .nav-wrapper .btn {
+                padding: 8px 14px;
                 font-size: 0.85rem;
             }
 
+            /* Oprava formuláře a kontaktní sekce */
             .contact-section {
                 padding: 20px 16px;
+                margin-bottom: 32px;
             }
 
             .contact-form {
                 grid-template-columns: 1fr;
+                gap: 14px;
             }
 
             .contact-details-grid {
                 grid-template-columns: 1fr;
-                gap: 16px;
-                text-align: center;
+                gap: 20px;
+                text-align: left;
             }
 
             .contact-info-item {
-                justify-content: center;
+                justify-content: flex-start;
                 word-break: break-word;
             }
 
-            .btn-whatsapp {
-                width: 100%;
-                box-sizing: border-box;
+            .grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero {
+                padding: 30px 0 20px;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .local-feature-box, .airbnb-section {
+                padding: 20px 16px;
             }
         }
     </style>
@@ -750,7 +779,7 @@
                 <p>Stavíme výhradně na prvcích, které komunikují v místní síti bez nutnosti posílat data do cloudu třetích stran.</p>
             </div>
 
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 24px; margin-bottom: 24px;">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; margin-bottom: 24px;">
                 <div class="card" style="padding: 24px;">
                     <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 14px;">
                         <div class="card-icon amber" style="width: 44px; height: 44px; font-size: 1.3rem; margin-bottom: 0;">🌡️</div>
@@ -762,19 +791,19 @@
                     <ul style="list-style: none; margin: 12px 0 0 0; padding: 0;">
                         <li style="display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 0.92rem;">
                             <span><strong style="color: var(--accent);">✓</strong> <strong>Danfoss Ally & Sonoff</strong></span>
-                            <span style="color: var(--text-muted);">(Zigbee lokal)</span>
+                            <span style="color: var(--text-muted);">(Zigbee)</span>
                         </li>
                         <li style="display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 0.92rem;">
                             <span><strong style="color: var(--accent);">✓</strong> <strong>Shelly TRV & Wall Display</strong></span>
-                            <span style="color: var(--text-muted);">(Lokální Wi-Fi)</span>
+                            <span style="color: var(--text-muted);">(Wi-Fi)</span>
                         </li>
                         <li style="display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 0.92rem;">
                             <span><strong style="color: var(--accent);">✓</strong> <strong>Tado & Netatmo</strong></span>
-                            <span style="color: var(--text-muted);">(HomeKit Local)</span>
+                            <span style="color: var(--text-muted);">(HomeKit)</span>
                         </li>
                         <li style="display: flex; justify-content: space-between; padding: 8px 0; font-size: 0.92rem;">
                             <span><strong style="color: var(--accent);">✓</strong> <strong>Daikin, Mitsubishi</strong></span>
-                            <span style="color: var(--text-muted);">(Lokální adaptéry)</span>
+                            <span style="color: var(--text-muted);">(Adaptéry)</span>
                         </li>
                     </ul>
                 </div>
@@ -790,19 +819,19 @@
                     <ul style="list-style: none; margin: 12px 0 0 0; padding: 0;">
                         <li style="display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 0.92rem;">
                             <span><strong style="color: var(--accent);">✓</strong> <strong>Shelly (Plus / Pro)</strong></span>
-                            <span style="color: var(--text-muted);">(CoIoT / LAN)</span>
+                            <span style="color: var(--text-muted);">(LAN)</span>
                         </li>
                         <li style="display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 0.92rem;">
-                            <span><strong style="color: var(--accent);">✓</strong> <strong>Philips Hue & IKEA Tradfri</strong></span>
-                            <span style="color: var(--text-muted);">(Zigbee lokal)</span>
+                            <span><strong style="color: var(--accent);">✓</strong> <strong>Philips Hue & IKEA</strong></span>
+                            <span style="color: var(--text-muted);">(Zigbee)</span>
                         </li>
                         <li style="display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 0.92rem;">
                             <span><strong style="color: var(--accent);">✓</strong> <strong>Sonoff ZBMINI & Aqara</strong></span>
-                            <span style="color: var(--text-muted);">(Zigbee 3.0)</span>
+                            <span style="color: var(--text-muted);">(Zigbee)</span>
                         </li>
                         <li style="display: flex; justify-content: space-between; padding: 8px 0; font-size: 0.92rem;">
                             <span><strong style="color: var(--accent);">✓</strong> <strong>ESPHome moduly</strong></span>
-                            <span style="color: var(--text-muted);">(100% Open-source)</span>
+                            <span style="color: var(--text-muted);">(Open-source)</span>
                         </li>
                     </ul>
                 </div>
@@ -818,19 +847,19 @@
                     <ul style="list-style: none; margin: 12px 0 0 0; padding: 0;">
                         <li style="display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 0.92rem;">
                             <span><strong style="color: var(--accent);">✓</strong> <strong>Nuki Smart Lock (Pro)</strong></span>
-                            <span style="color: var(--text-muted);">(MQTT / Bluetooth)</span>
+                            <span style="color: var(--text-muted);">(MQTT)</span>
                         </li>
                         <li style="display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 0.92rem;">
                             <span><strong style="color: var(--accent);">✓</strong> <strong>Reolink & Hikvision</strong></span>
-                            <span style="color: var(--text-muted);">(RTSP / ONVIF stream)</span>
+                            <span style="color: var(--text-muted);">(RTSP)</span>
                         </li>
                         <li style="display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 0.92rem;">
                             <span><strong style="color: var(--accent);">✓</strong> <strong>Aqara & Sonoff Čidla</strong></span>
-                            <span style="color: var(--text-muted);">(Zigbee lokal)</span>
+                            <span style="color: var(--text-muted);">(Zigbee)</span>
                         </li>
                         <li style="display: flex; justify-content: space-between; padding: 8px 0; font-size: 0.92rem;">
                             <span><strong style="color: var(--accent);">✓</strong> <strong>Jablotron 100+</strong></span>
-                            <span style="color: var(--text-muted);">(RS-485 / IP Bus)</span>
+                            <span style="color: var(--text-muted);">(RS-485)</span>
                         </li>
                     </ul>
                 </div>
@@ -846,19 +875,19 @@
                     <ul style="list-style: none; margin: 12px 0 0 0; padding: 0;">
                         <li style="display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 0.92rem;">
                             <span><strong style="color: var(--accent);">✓</strong> <strong>Victron, GoodWe, Solax</strong></span>
-                            <span style="color: var(--text-muted);">(Modbus TCP/LAN)</span>
+                            <span style="color: var(--text-muted);">(Modbus)</span>
                         </li>
                         <li style="display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 0.92rem;">
                             <span><strong style="color: var(--accent);">✓</strong> <strong>Shelly Pro 3EM</strong></span>
-                            <span style="color: var(--text-muted);">(Lokální LAN měřič)</span>
+                            <span style="color: var(--text-muted);">(LAN)</span>
                         </li>
                         <li style="display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 0.92rem;">
                             <span><strong style="color: var(--accent);">✓</strong> <strong>Loxone & Modbus měřiče</strong></span>
-                            <span style="color: var(--text-muted);">(Sériová linka)</span>
+                            <span style="color: var(--text-muted);">(Sériová)</span>
                         </li>
                         <li style="display: flex; justify-content: space-between; padding: 8px 0; font-size: 0.92rem;">
                             <span><strong style="color: var(--accent);">✓</strong> <strong>Roborock (Valetudo)</strong></span>
-                            <span style="color: var(--text-muted);">(100% Lokální lux)</span>
+                            <span style="color: var(--text-muted);">(Lokální)</span>
                         </li>
                     </ul>
                 </div>
@@ -883,7 +912,7 @@
                     </div>
 
                     <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 20px;">Poctivý hardwarový server dodávaný přímo do vašeho objektu. Systém běží na ultra rychlém 512GB NVMe SSD úložišti s pasivním chladičem pro tichý, bezpečný a zcela autonomní provoz 24/7.</p>
-                    <button class="btn btn-primary" onclick="selectService('Smart AI Komplet vč. HW Serveru (24 900 Kč)')">Chci komplet s HW serverem</button>
+                    <button class="btn btn-primary" onclick="selectService('Smart AI Komplet vč. HW Serveru (24 900 Kč)')" style="width: 100%;">Chci komplet s HW serverem</button>
                 </div>
 
                 <div class="workflow-steps">
@@ -943,7 +972,7 @@
                         <li><strong>Garantovaná paušální péče na 24 měsíců v ceně</strong></li>
                         <li>Možnost prodloužení servisu po 2 letech (2 400 Kč / ročně)</li>
                     </ul>
-                    <button class="btn btn-primary" onclick="selectService('Smart AI Komplet vč. HW Serveru (24 900 Kč)')">Chci komplet na klíč</button>
+                    <button class="btn btn-primary" onclick="selectService('Smart AI Komplet vč. HW Serveru (24 900 Kč)')" style="width: 100%;">Chci komplet na klíč</button>
                 </div>
             </div>
         </section>
@@ -986,7 +1015,7 @@
                 </div>
 
                 <div class="form-group full">
-                    <button type="submit" class="btn btn-primary" style="font-size: 1rem; padding: 14px;">Odeslat nezávaznou poptávku</button>
+                    <button type="submit" class="btn btn-primary" style="font-size: 1rem; padding: 14px; width: 100%;">Odeslat nezávaznou poptávku</button>
                 </div>
             </form>
 
@@ -1020,7 +1049,7 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2026 ITdílna s.r.o. | Specialisté na ovládání chytré domácnosti.</p>
+            <p>&copy; 2026 ITdílna s.r.o. | Osobní IT servis a bezpečné chytré domácnosti.</p>
         </div>
     </footer>
 
