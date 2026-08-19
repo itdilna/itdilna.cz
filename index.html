@@ -438,11 +438,6 @@
             align-items: center;
         }
 
-        @media (max-width: 900px) {
-            .airbnb-content { grid-template-columns: 1fr; }
-            .hero h1 { font-size: 2.1rem; }
-        }
-
         .workflow-steps {
             display: flex;
             flex-direction: column;
@@ -534,11 +529,6 @@
             color: var(--primary);
         }
 
-        @media (max-width: 768px) {
-            .contact-form { grid-template-columns: 1fr; }
-            .contact-details-grid { grid-template-columns: 1fr; }
-        }
-
         .form-group {
             display: flex;
             flex-direction: column;
@@ -587,6 +577,57 @@
             text-align: center;
             color: var(--text-muted);
             font-size: 0.9rem;
+        }
+
+        /* Responsive Breakpoints & Mobile Fixes */
+        @media (max-width: 900px) {
+            .airbnb-content { grid-template-columns: 1fr; }
+            .hero h1 { font-size: 2.1rem; }
+        }
+
+        @media (max-width: 768px) {
+            .nav-wrapper {
+                flex-wrap: wrap;
+                gap: 12px;
+                justify-content: center;
+            }
+
+            .nav-links {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 10px 14px;
+                width: 100%;
+                margin-top: 10px;
+            }
+
+            .nav-links a {
+                font-size: 0.85rem;
+            }
+
+            .contact-section {
+                padding: 20px 16px;
+            }
+
+            .contact-form {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-details-grid {
+                grid-template-columns: 1fr;
+                gap: 16px;
+                text-align: center;
+            }
+
+            .contact-info-item {
+                justify-content: center;
+                word-break: break-word;
+            }
+
+            .btn-whatsapp {
+                width: 100%;
+                box-sizing: border-box;
+            }
         }
     </style>
 </head>
@@ -681,7 +722,7 @@
                 <div class="card">
                     <div class="card-icon green">🧠</div>
                     <h3>2. Chytré chatové rozhraní (AI)</h3>
-                    <p>Propojení AI rozhraní do vaší chatovací aplikace. Místo hledání tlačítek v aplikaci ovládáte dům přirozenými zprávami.</p>
+                    <p>Propojení AI rozhraní do vaší chatovací aplikace. Místo hledání tlačítka v aplikaci ovládáte dům přirozenými zprávami.</p>
                     <ul class="card-features">
                         <li>Přímé dotazy na stav: „Jaká je teplota v ložnici?“</li>
                         <li>Konkrétní příkazy: „Nastav v ložnici 25 stupňů“ nebo „Vypni všechna světla“</li>
@@ -979,7 +1020,7 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2026 ITdílna s.r.o. | Osobní IT servis a bezpečné chytré domácnosti.</p>
+            <p>&copy; 2026 ITdílna s.r.o. | Specialisté na ovládání chytré domácnosti.</p>
         </div>
     </footer>
 
